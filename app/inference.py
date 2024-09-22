@@ -12,6 +12,8 @@ detector_processor = AutoImageProcessor.from_pretrained("Yifeng-Liu/rt-detr-fine
 overrides = dict(conf=0.25, task="segment", mode="predict", model="FastSAM-x.pt", save=False)
 segment_predictor = FastSAMPredictor(overrides=overrides)
 
+IMG_FORMATS = {"bmp", "dng", "jpeg", "jpg", "mpo", "png", "tif", "tiff", "webp", "pfm"}  # image suffixes
+
 
 class ModelInference:
     def __init__(self, detector, detector_processor, segment_predictor, id2label, CONFIDENCE_TRESHOLD):
@@ -67,4 +69,5 @@ class ModelInference:
             print("No segmentation mask generated")
             return None
 
-    def predict_folder(self, batch):
+    def predict_folder(self, image_folder, batch_size=4):
+        files = [path for path in image_folder.rglob("*.*") if path.suffix[1:].lower() in IMG_FORMATS]

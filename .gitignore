@@ -166,3 +166,6 @@ cython_debug/
 notebooks/lightning_logs/
 notebooks/my_dataset/
 notebooks/my_model/
+notebooks/result/
+
+app/img/
