@@ -167,5 +167,6 @@ notebooks/lightning_logs/
 notebooks/my_dataset/
 notebooks/my_model/
 notebooks/result/
+notebooks/result.zip
 
 app/img/
